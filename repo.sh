@@ -23,22 +23,23 @@ else
     OPENEDX_GIT_BRANCH=master
 fi
 
+GIT_OWNER=${GIT_OWNER:-edx}
 repos=(
-    "https://github.com/edx/course-discovery.git"
-    "https://github.com/edx/credentials.git"
-    "https://github.com/edx/cs_comments_service.git"
-    "https://github.com/edx/ecommerce.git"
-    "https://github.com/edx/edx-e2e-tests.git"
-    "https://github.com/edx/edx-notes-api.git"
-    "https://github.com/edx/edx-platform.git"
-    "https://github.com/edx/xqueue.git"
-    "https://github.com/edx/edx-analytics-pipeline.git"
-    "https://github.com/edx/gradebook.git"
+    "https://github.com/${GIT_OWNER}/course-discovery.git"
+    "https://github.com/${GIT_OWNER}/credentials.git"
+    "https://github.com/${GIT_OWNER}/cs_comments_service.git"
+    "https://github.com/${GIT_OWNER}/ecommerce.git"
+    "https://github.com/${GIT_OWNER}/edx-e2e-tests.git"
+    "https://github.com/${GIT_OWNER}/edx-notes-api.git"
+    "https://github.com/${GIT_OWNER}/edx-platform.git"
+    "https://github.com/${GIT_OWNER}/xqueue.git"
+    "https://github.com/${GIT_OWNER}/edx-analytics-pipeline.git"
+    "https://github.com/${GIT_OWNER}/gradebook.git"
 )
 
 private_repos=(
     # Needed to run whitelabel tests.
-    "https://github.com/edx/edx-themes.git"
+    "https://github.com/${GIT_OWNER}/edx-themes.git"
 )
 
 name_pattern=".*/(.*).git"
