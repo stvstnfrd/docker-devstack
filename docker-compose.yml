@@ -143,7 +143,7 @@ services:
       BOK_CHOY_CMS_PORT: 18031
       EDXAPP_TEST_MONGO_HOST: edx.devstack.mongo
       NO_PYTHON_UNINSTALL: 1
-    image: edxops/edxapp:${OPENEDX_RELEASE:-latest}
+    image: ${DOCKER_OWNER_EDXAPP:-edxops}/edxapp:${OPENEDX_RELEASE:-latest}
     ports:
       - "18000:18000"
       - "19876:19876" # JS test debugging
@@ -151,6 +151,7 @@ services:
       # - "18031:18031"
     volumes:
       - edxapp_lms_assets:/edx/var/edxapp/staticfiles/
+      - ${DEVSTACK_WORKSPACE}/themes:/edx/app/edxapp/themes/comprehensive:cached
 
   edx_notes_api:
     command: bash -c 'source /edx/app/edx_notes_api/edx_notes_api_env && while true; do python /edx/app/edx_notes_api/edx_notes_api/manage.py runserver 0.0.0.0:18120 --settings notesserver.settings.devstack; sleep 2; done'
@@ -189,7 +190,7 @@ services:
       BOK_CHOY_CMS_PORT: 18131
       EDXAPP_TEST_MONGO_HOST: edx.devstack.mongo
       NO_PYTHON_UNINSTALL: 1
-    image: edxops/edxapp:${OPENEDX_RELEASE:-latest}
+    image: ${DOCKER_OWNER_EDXAPP:-edxops}/edxapp:${OPENEDX_RELEASE:-latest}
     ports:
       - "18010:18010"
       - "19877:19877" # JS test debugging
@@ -197,6 +198,7 @@ services:
       # - "18131:18131"
     volumes:
       - edxapp_studio_assets:/edx/var/edxapp/staticfiles/
+      - ${DEVSTACK_WORKSPACE}/themes:/edx/app/edxapp/themes/comprehensive:cached
 
   forum:
     command: bash -c 'source /edx/app/forum/ruby_env && source /edx/app/forum/devstack_forum_env && cd /edx/app/forum/cs_comments_service && bundle install && while true; do ruby app.rb -o 0.0.0.0 ; sleep 2; done'
@@ -205,7 +207,7 @@ services:
       - mongo
       - memcached
       - elasticsearch
-    image: edxops/forum:${OPENEDX_RELEASE:-latest}
+    image: ${DOCKER_OWNER_FORUM:-edxops}/forum:${OPENEDX_RELEASE:-latest}
     ports:
       - "44567:4567"
 

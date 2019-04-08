@@ -20,13 +20,14 @@ fi
 repos=(
     "https://github.com/edx/course-discovery.git"
     "https://github.com/edx/credentials.git"
-    "https://github.com/edx/cs_comments_service.git"
+    "https://github.com/Stanford-Online/cs_comments_service.git"
     "https://github.com/edx/ecommerce.git"
     "https://github.com/edx/edx-e2e-tests.git"
     "https://github.com/edx/edx-notes-api.git"
-    "https://github.com/edx/edx-platform.git"
+    "https://github.com/Stanford-Online/edx-platform.git"
     "https://github.com/edx/xqueue.git"
     "https://github.com/edx/edx-analytics-pipeline.git"
+    "https://github.com/Stanford-Online/openedx-themes.git"
 )
 
 private_repos=(
@@ -51,6 +52,11 @@ _checkout ()
         # Results of the match are saved to an array called $BASH_REMATCH.
         [[ $repo =~ $name_pattern ]]
         name="${BASH_REMATCH[1]}"
+        if [ "${name}" == "edx-platform" ] || [ "${name}" == "openedx-themes" ]; then
+            branch="open-release/${OPENEDX_RELEASE}"
+        elif [ "${name}" == "cs_comments_service" ]; then
+            branch=master
+        fi
 
         # If a directory exists and it is nonempty, assume the repo has been cloned.
         if [ -d "$name" -a -n "$(ls -A "$name" 2>/dev/null)" ]; then
