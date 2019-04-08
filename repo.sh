@@ -25,10 +25,11 @@ fi
 
 GIT_OWNER=${GIT_OWNER:-edx}
 GIT_OWNER_EDXAPP=${GIT_OWNER_EDXAPP:-${GIT_OWNER}}
+GIT_OWNER_FORUM=${GIT_OWNER_FORUM:-${GIT_OWNER}}
 repos=(
     "https://github.com/${GIT_OWNER}/course-discovery.git"
     "https://github.com/${GIT_OWNER}/credentials.git"
-    "https://github.com/${GIT_OWNER}/cs_comments_service.git"
+    "https://github.com/${GIT_OWNER_FORUM}/cs_comments_service.git"
     "https://github.com/${GIT_OWNER}/ecommerce.git"
     "https://github.com/${GIT_OWNER}/edx-e2e-tests.git"
     "https://github.com/${GIT_OWNER}/edx-notes-api.git"
