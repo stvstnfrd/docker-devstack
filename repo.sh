@@ -18,6 +18,7 @@ else
 fi
 
 GIT_OWNER=${GIT_OWNER:-edx}
+GIT_OWNER_EDXAPP=${GIT_OWNER_EDXAPP:-${GIT_OWNER}}
 repos=(
     "https://github.com/${GIT_OWNER}/course-discovery.git"
     "https://github.com/${GIT_OWNER}/credentials.git"
@@ -25,7 +26,7 @@ repos=(
     "https://github.com/${GIT_OWNER}/ecommerce.git"
     "https://github.com/${GIT_OWNER}/edx-e2e-tests.git"
     "https://github.com/${GIT_OWNER}/edx-notes-api.git"
-    "https://github.com/${GIT_OWNER}/edx-platform.git"
+    "https://github.com/${GIT_OWNER_EDXAPP}/edx-platform.git"
     "https://github.com/${GIT_OWNER}/xqueue.git"
     "https://github.com/${GIT_OWNER}/edx-analytics-pipeline.git"
     "https://github.com/${GIT_OWNER}/gradebook.git"
