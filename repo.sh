@@ -90,7 +90,7 @@ _clone ()
                 git clone $repo
             fi
             if [ -n "${OPENEDX_RELEASE}" ]; then
-                git checkout open-release/${OPENEDX_RELEASE}
+                git -C "${name}" checkout open-release/${OPENEDX_RELEASE}
             fi
         fi
     done
