@@ -2,10 +2,12 @@ DOCKER_OWNER ?= edxops
 DOCKER_OWNER_EDXAPP ?= stvstnfrd
 DOCKER_OWNER_FORUM ?= stvstnfrd
 OPENEDX_RELEASE=hawthorn.master
+STANFORD_BRANCH=master
 export DOCKER_OWNER
 export DOCKER_OWNER_EDXAPP
 export DOCKER_OWNER_FORUM
 export OPENEDX_RELEASE
+export STANFORD_BRANCH
 
 from_scratch:
 	make destroy

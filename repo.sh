@@ -37,6 +37,21 @@ private_repos=(
 
 name_pattern=".*/(.*).git"
 
+_get_stanford_branch() {
+    name=${1}
+    case "${name}" in
+        cs_comments_service) ;&
+        edx-platform) ;&
+        openedx-themes)
+            branch=${STANFORD_BRANCH}
+            ;;
+        *)
+            branch=open-release/${OPENEDX_RELEASE}
+            ;;
+    esac
+    echo "${branch}"
+}
+
 _checkout ()
 {
     repos_to_checkout=("$@")
@@ -52,11 +67,7 @@ _checkout ()
         # Results of the match are saved to an array called $BASH_REMATCH.
         [[ $repo =~ $name_pattern ]]
         name="${BASH_REMATCH[1]}"
-        if [ "${name}" == "edx-platform" ] || [ "${name}" == "openedx-themes" ]; then
-            branch="open-release/${OPENEDX_RELEASE}"
-        elif [ "${name}" == "cs_comments_service" ]; then
-            branch=master
-        fi
+        branch=$(_get_stanford_branch "${name}")
 
         # If a directory exists and it is nonempty, assume the repo has been cloned.
         if [ -d "$name" -a -n "$(ls -A "$name" 2>/dev/null)" ]; then
