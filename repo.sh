@@ -106,9 +106,8 @@ _clone ()
             else
                 git clone $repo
             fi
-            if [ -n "${OPENEDX_RELEASE}" ]; then
-                git -C "${name}" checkout open-release/${OPENEDX_RELEASE}
-            fi
+            branch=$(_get_stanford_branch "${name}")
+            git -C "${name}" checkout "${branch}"
         fi
     done
     cd - &> /dev/null
