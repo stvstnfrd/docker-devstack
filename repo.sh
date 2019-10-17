@@ -101,15 +101,15 @@ _clone ()
         if [ -d "$name" -a -n "$(ls -A "$name" 2>/dev/null)" ]; then
             printf "The [%s] repo is already checked out. Continuing.\n" $name
         else
+            branch=$(_get_stanford_branch "${name}")
             if [ "${SHALLOW_CLONE}" == "1" ]; then
-                git clone --depth=1 $repo
+                git clone --depth=1 --branch "${branch}" $repo
             else
                 git clone $repo
+                git -C "${name}" remote -vvvv
+                git -C "${name}" branch --all -vvvv
+                git -C "${name}" checkout -b "${branch}" "origin/${branch}"
             fi
-            branch=$(_get_stanford_branch "${name}")
-            git -C "${name}" remote -vvvv
-            git -C "${name}" branch --all -vvvv
-            git -C "${name}" checkout -b "${branch}" "origin/${branch}"
         fi
     done
     cd - &> /dev/null
