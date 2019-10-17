@@ -107,7 +107,7 @@ _clone ()
                 git clone $repo
             fi
             branch=$(_get_stanford_branch "${name}")
-            git -C "${name}" remove -vvvv
+            git -C "${name}" remote -vvvv
             git -C "${name}" branch --all -vvvv
             git -C "${name}" checkout -b "${branch}" "origin/${branch}"
         fi
