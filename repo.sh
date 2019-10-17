@@ -107,7 +107,7 @@ _clone ()
                 git clone $repo
             fi
             branch=$(_get_stanford_branch "${name}")
-            git -C "${name}" checkout "${branch}"
+            git -C "${name}" checkout -b "${branch}" "origin/${branch}"
         fi
     done
     cd - &> /dev/null
